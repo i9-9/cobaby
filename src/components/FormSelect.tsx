@@ -99,14 +99,14 @@ export function FormSelect({
       <button
         type="button"
         id={id}
-        className="unete-custom-select w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint text-left flex items-center justify-between gap-2 touch-manipulation transition-colors hover:border-cobaby-dark/30"
+        className="unete-custom-select w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint text-left flex items-center justify-between gap-2 touch-manipulation transition-colors hover:border-cobaby-dark/30 cursor-pointer"
         onClick={() => setOpen((o) => !o)}
         onKeyDown={handleKeyDown}
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-labelledby={id ? `${id}-label` : undefined}
       >
-        <span className={isPlaceholder ? "text-cobaby-dark/50" : "truncate"}>{displayValue}</span>
+        <span className={isPlaceholder ? "text-cobaby-dark/50 font-normal" : "truncate"}>{displayValue}</span>
         <span className={open ? "rotate-180" : ""}>
           <IconChevronDown />
         </span>

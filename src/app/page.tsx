@@ -97,26 +97,26 @@ export default function Home() {
       <div className="grid grid-cols-6 desktop:grid-cols-12 gap-x-4 desktop:gap-x-6 px-[15px] desktop:px-[50px] max-w-[1600px] mx-auto">
         {/* Header: logo + nav (desktop) / hamburger (mobile) */}
         <header className="col-span-full flex items-center justify-between py-4 desktop:py-8 bg-[#f5f5f5] -mx-[15px] desktop:-mx-[50px] px-[15px] desktop:px-[50px]">
-          <Link href="/" className="flex items-center shrink-0">
+          <Link href="/" className="flex items-center shrink-0 cursor-pointer">
             <Image
               src="/logo/cobaby_logo.png"
               alt="Cobaby"
-              width={120}
-              height={36}
-              className="h-8 w-auto desktop:h-9"
+              width={160}
+              height={48}
+              className="h-8 w-auto desktop:h-12"
               priority
             />
           </Link>
           <nav className="hidden desktop:flex items-center gap-8 font-body font-bold text-cobaby-dark" aria-label="Navegación principal">
             {navItems.map(({ href, label }) => (
-              <Link key={href} href={href} className="hover:text-cobaby-green transition-colors">
+              <Link key={href} href={href} className="hover:text-cobaby-green transition-colors cursor-pointer">
                 {label}
               </Link>
             ))}
           </nav>
           <button
             type="button"
-            className="desktop:hidden p-2 -m-2 text-cobaby-dark hover:text-cobaby-green transition-colors touch-manipulation"
+            className="desktop:hidden p-2 -m-2 text-cobaby-dark hover:text-cobaby-green transition-colors touch-manipulation cursor-pointer"
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
@@ -140,7 +140,7 @@ export default function Home() {
             <div className="flex items-center justify-end p-4 shrink-0">
               <button
                 type="button"
-                className="p-2 -m-2 text-cobaby-dark hover:text-cobaby-green transition-colors touch-manipulation"
+                className="p-2 -m-2 text-cobaby-dark hover:text-cobaby-green transition-colors touch-manipulation cursor-pointer"
                 aria-label="Cerrar menú"
                 onClick={closeMenu}
               >
@@ -162,7 +162,7 @@ export default function Home() {
                     <Link
                       href={href}
                       onClick={closeMenu}
-                      className="block py-4 px-3 -mx-3 rounded-xl hover:bg-cobaby-mint/20 hover:text-cobaby-green active:bg-cobaby-mint/30 transition-colors text-lg text-center"
+                      className="block py-4 px-3 -mx-3 rounded-xl hover:bg-cobaby-mint/20 hover:text-cobaby-green active:bg-cobaby-mint/30 transition-colors text-lg text-center cursor-pointer"
                     >
                       {label}
                     </Link>
@@ -226,13 +226,13 @@ export default function Home() {
           <div className="flex flex-row flex-wrap gap-3 desktop:gap-4 w-full max-w-md desktop:max-w-none justify-center mt-8 desktop:mt-12 desktop:col-span-12">
             <Link
               href="#comienza"
-              className="inline-flex items-center justify-center rounded-full bg-cobaby-mint px-6 py-3.5 text-white font-body font-bold hover:bg-cobaby-green transition-colors"
+              className="inline-flex items-center justify-center rounded-full bg-cobaby-mint px-6 py-3.5 text-white font-body font-bold hover:bg-cobaby-green transition-colors cursor-pointer"
             >
               Comienza tu historia
             </Link>
             <Link
               href="#donar"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-cobaby-dark px-6 py-3.5 text-cobaby-mint font-body font-bold hover:bg-cobaby-green hover:text-white transition-colors [&_svg]:text-current"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-cobaby-dark px-6 py-3.5 text-cobaby-mint font-body font-bold hover:bg-cobaby-green hover:text-white transition-colors cursor-pointer [&_svg]:text-current"
             >
               <IconDroplet />
               Donar semen
@@ -253,7 +253,7 @@ export default function Home() {
               <p className="font-body text-cobaby-dark/90 text-base desktop:text-lg leading-relaxed mb-6">
                 Somos la primera plataforma en América Latina para mujeres que desean ser madres y quieren encontrar el camino que mejor se adapte a su vida.
               </p>
-              <p className="font-body font-bold text-cobaby-green text-lg desktop:text-xl mb-3">
+              <p className="font-body font-bold text-cobaby-mint text-lg desktop:text-xl mb-3">
                 Queremos entender mejor lo que necesitas.
               </p>
               <p className="font-body text-cobaby-dark/90 text-sm desktop:text-base leading-relaxed">
@@ -281,7 +281,7 @@ export default function Home() {
                   <input
                     type="text"
                     placeholder="Tu nombre de pila"
-                    className="w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark placeholder:text-cobaby-dark/50 focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint"
+                    className="w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark placeholder:text-cobaby-dark/50 placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint"
                   />
                 </label>
                 <label className="flex flex-col gap-1.5 text-sm font-bold" id="label-edad">
@@ -364,11 +364,75 @@ export default function Home() {
 
                 <button
                   type="submit"
-                  className="w-full mt-2 py-3.5 rounded-full bg-cobaby-mint text-white font-body font-bold hover:bg-cobaby-green transition-colors touch-manipulation"
+                  className="w-full mt-2 py-3.5 rounded-full bg-cobaby-mint text-white font-body font-bold hover:bg-cobaby-green transition-colors touch-manipulation cursor-pointer"
                 >
                   Hablar con una experta
                 </button>
               </form>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3: ¿Qué es CoBaby? — cards con gradiente e iconos sole_icons */}
+        <section
+          id="que-es"
+          className="col-span-full -mx-[15px] desktop:-mx-[50px] bg-[#fbfaf9] py-12 desktop:py-20 px-[15px] desktop:px-[50px] text-cobaby-dark"
+        >
+          <div className="max-w-[1600px] mx-auto">
+            <header className="text-center max-w-4xl mx-auto mb-8 desktop:mb-12">
+              <h2 className="font-heading text-3xl desktop:text-4xl font-semibold mb-8 desktop:mb-10">
+                ¿Qué es <span className="text-cobaby-mint">CoBaby?</span>
+              </h2>
+              <p className="font-body text-cobaby-dark/90 text-base desktop:text-lg leading-relaxed">
+                CoBaby es una comunidad digital dirigida a personas que quieren ser madres con un donante de semen, o mujeres y hombres que buscan un vínculo romántico para ser pareja y posteriormente padres, o simplemente coparentar sin vínculo romántico.
+              </p>
+            </header>
+
+            <div className="grid grid-cols-1 desktop:grid-cols-2 gap-6 desktop:gap-8 max-w-4xl mx-auto">
+              {[
+                {
+                  icon: "/tabs_cobaby/Background.png",
+                  title: "Donantes de semen",
+                  description: "Conecta con donantes dispuestos a ayudarte a cumplir tu sueño de ser madre.",
+                },
+                {
+                  icon: "/tabs_cobaby/Background-1.png",
+                  title: "Pareja para formar familia",
+                  description: "Encuentra a alguien que comparta tu deseo de formar una familia y construir un vínculo romántico.",
+                },
+                {
+                  icon: "/tabs_cobaby/Background-2.png",
+                  title: "Co-parentalidad",
+                  description: "Busca un co-padre o co-madre para criar juntos sin necesidad de una relación romántica.",
+                },
+                {
+                  icon: "/tabs_cobaby/Background-3.png",
+                  title: "Comunidad de apoyo",
+                  description: "Únete a una red de personas que entienden tu camino y comparten tus sueños.",
+                },
+              ].map(({ icon, title, description }) => (
+                <article
+                  key={title}
+                  className="bg-white rounded-2xl p-5 desktop:p-6 shadow-sm flex flex-col gap-4 desktop:gap-5 items-start text-left"
+                >
+                  <div className="shrink-0 w-12 h-12 desktop:w-14 desktop:h-14 rounded-[16px] overflow-hidden relative">
+                    <Image
+                      src={icon}
+                      alt=""
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="font-heading font-semibold text-cobaby-dark text-base desktop:text-lg mb-1.5">
+                      {title}
+                    </h3>
+                    <p className="font-body text-cobaby-dark/80 text-sm desktop:text-base leading-relaxed">
+                      {description}
+                    </p>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>
