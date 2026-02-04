@@ -14,9 +14,70 @@ const quicksand = Quicksand({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cobaby.com";
+
 export const metadata: Metadata = {
-  title: "Cobaby",
-  description: "Cobaby",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "CoBaby | Comunidad para formar familia en Latinoamérica",
+    template: "%s | CoBaby",
+  },
+  description:
+    "La comunidad digital para personas que sueñan con formar una familia en Latinoamérica. Encuentra donantes, pareja para formar familia o co-padres. Acompañamiento y apoyo para tu camino.",
+  keywords: [
+    "CoBaby",
+    "formar familia",
+    "donante semen",
+    "co-padre",
+    "co-madre",
+    "maternidad",
+    "Latinoamérica",
+    "comunidad",
+    "coparentalidad",
+    "ser madre",
+  ],
+  authors: [{ name: "CoBaby" }],
+  creator: "CoBaby",
+  openGraph: {
+    type: "website",
+    locale: "es_ES",
+    url: siteUrl,
+    siteName: "CoBaby",
+    title: "CoBaby | Todas las familias nacen con un encuentro",
+    description:
+      "La comunidad digital para personas que sueñan con formar una familia en Latinoamérica. Encuentra donantes, pareja o co-padres.",
+    images: [
+      {
+        url: "/logo/cobaby_logo.png",
+        width: 400,
+        height: 120,
+        alt: "CoBaby",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CoBaby | Todas las familias nacen con un encuentro",
+    description:
+      "La comunidad digital para personas que sueñan con formar una familia en Latinoamérica.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "CoBaby",
+  url: siteUrl,
+  description:
+    "La comunidad digital para personas que sueñan con formar una familia en Latinoamérica.",
+  areaServed: "Latin America",
 };
 
 export default function RootLayout({
@@ -29,6 +90,10 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${quicksand.variable} font-body antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
       </body>
     </html>

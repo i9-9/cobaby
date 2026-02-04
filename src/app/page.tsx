@@ -440,7 +440,7 @@ export default function Home() {
         {/* Section 4: ¿Quiénes somos? — Natalia y Giuliana + footer */}
         <section
           id="quienes-somos"
-          className="col-span-full -mx-[15px] desktop:-mx-[50px] bg-white py-12 desktop:py-20 px-[15px] desktop:px-[50px] text-cobaby-dark"
+          className="col-span-full -mx-[15px] desktop:-mx-[50px] bg-white py-12 desktop:py-20 px-[15px] desktop:px-[50px] text-cobaby-dark overflow-x-hidden"
         >
           <div className="max-w-[1600px] mx-auto">
             <header className="text-center max-w-2xl mx-auto mb-10 desktop:mb-14">
@@ -476,10 +476,10 @@ export default function Home() {
               ].map(({ icon: IconComponent, name, description }) => (
                 <article
                   key={name}
-                  className="relative rounded-2xl desktop:rounded-3xl bg-[#fbfaf9] p-6 desktop:p-8 shadow-lg overflow-hidden text-center"
+                  className="relative rounded-2xl desktop:rounded-3xl bg-[#fbfaf9] p-6 desktop:p-8 shadow-lg overflow-hidden text-left"
                 >
                   <div className="absolute top-0 right-0 w-10 h-10 desktop:w-12 desktop:h-12 rounded-bl-2xl bg-cobaby-pink/15" aria-hidden />
-                  <div className="relative flex flex-col items-center gap-4">
+                  <div className="relative flex flex-col items-start gap-4">
                     <div className="text-cobaby-mint shrink-0 w-14 h-14 desktop:w-16 desktop:h-16 flex items-center justify-center">
                       <IconComponent />
                     </div>
@@ -497,7 +497,7 @@ export default function Home() {
             <p className="text-center text-sm text-cobaby-dark/60 mb-8 desktop:mb-10">
               Hecho con{" "}
               <span className="inline-flex align-middle" aria-hidden>
-                <svg className="w-4 h-4 text-cobaby-green inline-block" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                <svg className="w-4 h-4 text-cobaby-mint inline-block" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
                   <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                 </svg>
               </span>{" "}
@@ -506,19 +506,19 @@ export default function Home() {
 
             {/* Línea full viewport */}
             <div
-              className="border-t border-cobaby-dark/10 w-[100vw] ml-[calc(50%-50vw)] pt-8 desktop:pt-10"
+              className="border-t border-cobaby-dark/10 w-[100vw] ml-[calc(50%-50vw)] pt-4 desktop:pt-5"
               aria-hidden
             />
 
-            <footer className="pb-6 desktop:pb-8">
-              <div className="flex flex-col desktop:flex-row desktop:items-center desktop:justify-between gap-4">
+            <footer className="py-4 desktop:py-5 flex flex-col justify-center">
+              <div className="flex flex-col desktop:flex-row desktop:items-center desktop:justify-between gap-3">
                 <Link href="/" className="flex items-center shrink-0 cursor-pointer">
                   <Image
                     src="/logo/cobaby_logo.png"
                     alt="CoBaby"
-                    width={100}
-                    height={30}
-                    className="h-7 w-auto"
+                    width={160}
+                    height={48}
+                    className="h-10 w-auto"
                   />
                 </Link>
                 <p className="text-sm text-cobaby-dark/60 text-center desktop:text-right">
