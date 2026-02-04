@@ -114,16 +114,18 @@ export default function Home() {
       {/* Header: ancho completo, contenido limitado */}
       <header className="sticky top-0 z-40 w-full flex items-center justify-between py-4 desktop:py-3 bg-[#f5f5f5]/80 backdrop-blur-sm shadow-[0_2px_12px_rgba(0,0,0,0.06)] border-t-0 border-b border-cobaby-dark/10">
         <div className="w-full max-w-[1600px] mx-auto px-[15px] desktop:px-[50px] flex items-center justify-between">
-          <Link href="/" className="flex items-center shrink-0 cursor-pointer">
-            <Image
-              src="/logo/cobaby_logo.svg"
-              alt="Cobaby"
-              width={160}
-              height={48}
-              className="h-8 w-auto desktop:h-9"
-              priority
-            />
-          </Link>
+          <AnimateOnView className="shrink-0" variant="fade-in">
+            <Link href="/" className="flex items-center cursor-pointer">
+              <Image
+                src="/logo/cobaby_logo.svg"
+                alt="Cobaby"
+                width={160}
+                height={48}
+                className="h-8 w-auto desktop:h-9"
+                priority
+              />
+            </Link>
+          </AnimateOnView>
           <nav className="hidden desktop:flex items-center gap-8 font-body font-bold text-cobaby-dark" aria-label="Navegación principal">
             {navItems.map(({ href, label }) => (
               <Link
@@ -201,7 +203,7 @@ export default function Home() {
         <div className="grid grid-cols-6 desktop:grid-cols-12 gap-x-4 desktop:gap-x-6">
           <section className="col-span-full desktop:col-span-12 grid grid-cols-1 desktop:grid-cols-12 place-items-center pt-6 desktop:pt-12 pb-12 desktop:pb-20">
           {/* Logo grande centrado por encima del título */}
-          <AnimateOnView className="flex justify-center mb-6 desktop:mb-8 desktop:col-span-12" variant="fade-in">
+          <AnimateOnView className="flex justify-center mb-6 desktop:mb-8 desktop:col-span-12" variant="scale-in">
             <Image
               src="/logo/cobaby_logo.svg"
               alt="Cobaby"
