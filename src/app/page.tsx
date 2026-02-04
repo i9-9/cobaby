@@ -108,15 +108,15 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Header: ancho completo, contenido limitado */}
-      <header className="sticky top-0 z-40 w-full flex items-center justify-between py-4 desktop:py-8 bg-[#f5f5f5]">
+      <header className="sticky top-0 z-40 w-full flex items-center justify-between py-4 desktop:py-3 bg-[#f5f5f5]">
         <div className="w-full max-w-[1600px] mx-auto px-[15px] desktop:px-[50px] flex items-center justify-between">
           <Link href="/" className="flex items-center shrink-0 cursor-pointer">
             <Image
-              src="/logo/cobaby_logo.png"
+              src="/logo/cobaby_logo.svg"
               alt="Cobaby"
               width={160}
               height={48}
-              className="h-8 w-auto desktop:h-12"
+              className="h-8 w-auto desktop:h-9"
               priority
             />
           </Link>
@@ -199,11 +199,11 @@ export default function Home() {
           {/* Logo grande centrado por encima del título */}
           <div className="flex justify-center mb-6 desktop:mb-8 desktop:col-span-12">
             <Image
-              src="/logo/cobaby_logo.png"
+              src="/logo/cobaby_logo.svg"
               alt="Cobaby"
-              width={400}
-              height={120}
-              className="h-24 w-auto desktop:h-[140px] desktop:w-auto"
+              width={500}
+              height={150}
+              className="h-32 w-auto desktop:h-[200px] desktop:w-auto"
             />
           </div>
 
@@ -247,16 +247,16 @@ export default function Home() {
           </div>
 
           {/* CTAs */}
-          <div className="flex flex-row flex-wrap gap-3 desktop:gap-4 w-full max-w-md desktop:max-w-none justify-center mt-8 desktop:mt-12 desktop:col-span-12">
+          <div className="flex flex-row flex-wrap gap-3 desktop:gap-4 w-full max-w-md desktop:max-w-none justify-center mt-12 desktop:mt-16 desktop:col-span-12">
             <Link
               href="#comienza"
-              className="inline-flex items-center justify-center rounded-full bg-cobaby-mint px-6 py-3.5 text-white font-body font-bold hover:bg-cobaby-green transition-colors cursor-pointer"
+              className="inline-flex items-center justify-center rounded-full bg-cobaby-mint px-6 py-3.5 text-white font-body font-bold hover:bg-cobaby-green transition-colors cursor-pointer shadow-md"
             >
               Comienza tu historia
             </Link>
             <Link
               href="#donar"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-cobaby-dark px-6 py-3.5 text-cobaby-mint font-body font-bold hover:bg-cobaby-green hover:text-white transition-colors cursor-pointer [&_svg]:text-current"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-cobaby-dark px-6 py-3.5 text-cobaby-mint font-body font-bold hover:bg-cobaby-green hover:text-white transition-colors cursor-pointer shadow-md [&_svg]:text-current"
             >
               <IconDroplet />
               Donar semen
@@ -270,16 +270,16 @@ export default function Home() {
       <section id="unete" className="w-full bg-white py-12 desktop:py-20 text-cobaby-dark">
         <div className="max-w-[1600px] mx-auto px-[15px] desktop:px-[50px] flex flex-col items-center">
             <header className="text-center max-w-2xl mb-8 desktop:mb-12">
-              <h2 className="font-heading text-3xl desktop:text-4xl font-semibold mb-4 text-cobaby-dark">
+              <h2 className="font-heading text-4xl desktop:text-5xl font-semibold mb-8 desktop:mb-10 text-cobaby-dark">
                 Únete a <span className="text-cobaby-mint">CoBaby</span>
               </h2>
               <p className="font-body text-cobaby-dark/90 text-base desktop:text-lg leading-relaxed mb-6">
                 Somos la primera plataforma en América Latina para mujeres que desean ser madres y quieren encontrar el camino que mejor se adapte a su vida.
               </p>
-              <p className="font-body font-bold text-cobaby-mint text-lg desktop:text-xl mb-3">
+              <p className="font-body font-bold text-cobaby-mint text-lg desktop:text-xl mb-5 desktop:mb-7">
                 Queremos entender mejor lo que necesitas.
               </p>
-              <p className="font-body text-cobaby-dark/90 text-sm desktop:text-base leading-relaxed">
+              <p className="font-body text-cobaby-dark/90 text-base desktop:text-lg leading-relaxed">
                 Si te interesa explorar tus opciones para ser mamá, responde este breve cuestionario y una de nuestras expertas en acompañamiento a la maternidad se pondrá en contacto contigo para una conversación privada y confidencial.
               </p>
             </header>
@@ -400,10 +400,10 @@ export default function Home() {
       <section id="que-es" className="w-full bg-[#fbfaf9] py-12 desktop:py-20 text-cobaby-dark">
         <div className="max-w-[1600px] mx-auto px-[15px] desktop:px-[50px]">
             <header className="text-center max-w-4xl mx-auto mb-8 desktop:mb-12">
-              <h2 className="font-heading text-3xl desktop:text-4xl font-semibold mb-8 desktop:mb-10">
+              <h2 className="font-heading text-4xl desktop:text-5xl font-semibold mb-8 desktop:mb-10">
                 ¿Qué es <span className="text-cobaby-mint">CoBaby?</span>
               </h2>
-              <p className="font-body text-cobaby-dark/90 text-base desktop:text-lg leading-relaxed">
+              <p className="font-body text-cobaby-dark/90 text-base desktop:text-lg leading-snug mt-4 desktop:mt-6 mb-8 desktop:mb-10">
                 CoBaby es una comunidad digital dirigida a personas que quieren ser madres con un donante de semen, o mujeres y hombres que buscan un vínculo romántico para ser pareja y posteriormente padres, o simplemente coparentar sin vínculo romántico.
               </p>
             </header>
@@ -463,17 +463,17 @@ export default function Home() {
             <header className="text-center max-w-2xl mx-auto mb-10 desktop:mb-14">
               <div className="flex justify-center mb-4 desktop:mb-6">
                 <Image
-                  src="/logo/cobaby_logo.png"
+                  src="/logo/cobaby_logo.svg"
                   alt="CoBaby"
                   width={480}
                   height={144}
                   className="h-24 w-auto desktop:h-36"
                 />
               </div>
-              <h2 className="font-heading text-3xl desktop:text-4xl font-semibold mb-4 text-cobaby-dark">
+              <h2 className="font-heading text-4xl desktop:text-5xl font-semibold mb-4 text-cobaby-dark">
                 ¿Quiénes <span className="text-cobaby-mint">somos?</span>
               </h2>
-              <p className="font-body text-cobaby-dark/90 text-base desktop:text-lg leading-relaxed">
+              <p className="font-body text-cobaby-dark/90 text-base desktop:text-lg leading-snug mt-6 desktop:mt-8 mb-8 desktop:mb-10">
                 Dos mujeres unidas por la pasión de ayudar a otras personas a cumplir su sueño de formar una familia
               </p>
             </header>
@@ -531,7 +531,7 @@ export default function Home() {
               <div className="flex flex-col desktop:flex-row desktop:items-center desktop:justify-between gap-2 w-full max-w-[1600px]">
                 <Link href="/" className="flex items-center shrink-0 cursor-pointer">
                   <Image
-                    src="/logo/cobaby_logo.png"
+                    src="/logo/cobaby_logo.svg"
                     alt="CoBaby"
                     width={160}
                     height={48}
