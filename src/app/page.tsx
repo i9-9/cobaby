@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { IconClose, IconDroplet, IconHeart, IconMenu, IconStar } from "@/components/HeroIcons";
 import { FormSelect, type SelectOption } from "@/components/FormSelect";
@@ -75,6 +76,8 @@ const formSelectOptions = {
 };
 
 export default function Home() {
+  const searchParams = useSearchParams();
+  const formEnviado = searchParams.get("form") === "enviado";
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = useCallback(() => setMenuOpen(false), []);
   const openMenu = useCallback(() => setMenuOpen(true), []);
@@ -247,16 +250,16 @@ export default function Home() {
           </div>
 
           {/* CTAs */}
-          <div className="flex flex-row flex-wrap gap-3 desktop:gap-4 w-full max-w-md desktop:max-w-none justify-center mt-12 desktop:mt-16 desktop:col-span-12">
+          <div className="flex flex-row gap-2 desktop:gap-4 w-full desktop:max-w-none justify-center mt-12 desktop:mt-16 desktop:col-span-12">
             <Link
               href="#unete"
-              className="inline-flex items-center justify-center rounded-full bg-cobaby-mint px-6 py-3.5 text-white font-body font-bold hover:bg-cobaby-green transition-colors cursor-pointer shadow-md"
+              className="flex-1 desktop:flex-initial min-w-0 inline-flex items-center justify-center rounded-full bg-cobaby-mint px-6 py-3.5 text-white font-body font-bold hover:bg-cobaby-green transition-colors cursor-pointer shadow-md"
             >
               Comienza tu historia
             </Link>
             <Link
               href="#donar"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-cobaby-dark px-6 py-3.5 text-cobaby-mint font-body font-bold hover:bg-cobaby-green hover:text-white transition-colors cursor-pointer shadow-md [&_svg]:text-current"
+              className="flex-1 desktop:flex-initial min-w-0 inline-flex items-center justify-center gap-2 rounded-full bg-cobaby-dark px-6 py-3.5 text-cobaby-mint font-body font-bold hover:bg-cobaby-green hover:text-white transition-colors cursor-pointer shadow-md [&_svg]:text-current"
             >
               <IconDroplet />
               Donar semen
@@ -285,10 +288,37 @@ export default function Home() {
             </header>
 
             <div className="w-full max-w-xl rounded-2xl desktop:rounded-3xl bg-[#fbfaf9] text-cobaby-dark p-6 desktop:p-8 shadow-xl">
+              {formEnviado ? (
+                <div className="text-center py-6 desktop:py-8">
+                  <p className="font-heading text-xl desktop:text-2xl font-semibold text-cobaby-mint mb-3">
+                    ¡Gracias por escribirnos!
+                  </p>
+                  <p className="font-body text-cobaby-dark/90">
+                    Una de nuestras expertas se pondrá en contacto contigo pronto.
+                  </p>
+                </div>
+              ) : (
               <form
                 className="flex flex-col gap-4 desktop:gap-5 font-body"
-                onSubmit={(e) => e.preventDefault()}
+                action="https://formsubmit.co/contacto@micobaby.com"
+                method="POST"
               >
+                <input type="hidden" name="_subject" value="Nueva solicitud - CoBaby" />
+                <input
+                  type="hidden"
+                  name="_next"
+                  value={`${process.env.NEXT_PUBLIC_SITE_URL ?? "https://cobaby.com"}?form=enviado`}
+                />
+                <input type="hidden" name="_template" value="table" />
+                {/* Honeypot: si un bot rellena este campo, el envío se ignora. Invisible para usuarios. */}
+                <input
+                  type="text"
+                  name="_honey"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="absolute opacity-0 pointer-events-none h-0 w-0 overflow-hidden"
+                  aria-hidden
+                />
                 <label className="flex flex-col gap-1.5 text-sm font-bold" id="label-como-te-defines">
                   <span>¿Cómo te defines?<span className="text-red-600">*</span></span>
                   <FormSelect
@@ -303,6 +333,7 @@ export default function Home() {
                   <span>¿Cómo te llamas? <span className="font-normal text-cobaby-dark/70">(opcional)</span></span>
                   <input
                     type="text"
+                    name="nombre"
                     placeholder="Tu nombre de pila"
                     className="w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark placeholder:text-cobaby-dark/50 placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint"
                   />
@@ -377,6 +408,8 @@ export default function Home() {
                 <label className="flex gap-3 items-start cursor-pointer group">
                   <input
                     type="checkbox"
+                    name="acepto_politica"
+                    value="Sí"
                     className="mt-1 w-5 h-5 rounded-full border-2 border-cobaby-dark/40 text-cobaby-mint focus:ring-cobaby-mint shrink-0 accent-cobaby-mint"
                     required
                   />
@@ -392,6 +425,7 @@ export default function Home() {
                   Hablar con una experta
                 </button>
               </form>
+              )}
             </div>
           </div>
         </section>
@@ -527,18 +561,18 @@ export default function Home() {
               aria-hidden
             />
 
-            <footer className="min-h-0 py-2 desktop:py-2.5 flex flex-col items-center justify-center">
-              <div className="flex flex-col desktop:flex-row desktop:items-center desktop:justify-between gap-2 w-full max-w-[1600px]">
+            <footer className="min-h-0 py-4 desktop:py-2.5 flex flex-col items-center justify-center">
+              <div className="flex flex-row items-center justify-between gap-3 w-full max-w-[1600px]">
                 <Link href="/" className="flex items-center shrink-0 cursor-pointer">
                   <Image
                     src="/logo/cobaby_logo.svg"
                     alt="CoBaby"
                     width={160}
                     height={48}
-                    className="h-10 w-auto"
+                    className="h-8 w-auto desktop:h-10"
                   />
                 </Link>
-                <p className="text-sm text-cobaby-dark/60 text-center desktop:text-right">
+                <p className="text-xs desktop:text-sm text-cobaby-dark/60 text-right shrink-0 min-w-0 max-w-[60%] desktop:max-w-none">
                   ©2026 CoBaby. Todos los derechos reservados.
                 </p>
               </div>
