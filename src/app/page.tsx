@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
-import { IconClose, IconDroplet, IconMenu } from "@/components/HeroIcons";
+import { IconClose, IconDroplet, IconHeart, IconMenu, IconStar } from "@/components/HeroIcons";
 import { FormSelect, type SelectOption } from "@/components/FormSelect";
 
 const features = [
@@ -434,6 +434,98 @@ export default function Home() {
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Section 4: ¿Quiénes somos? — Natalia y Giuliana + footer */}
+        <section
+          id="quienes-somos"
+          className="col-span-full -mx-[15px] desktop:-mx-[50px] bg-white py-12 desktop:py-20 px-[15px] desktop:px-[50px] text-cobaby-dark"
+        >
+          <div className="max-w-[1600px] mx-auto">
+            <header className="text-center max-w-2xl mx-auto mb-10 desktop:mb-14">
+              <div className="flex justify-center mb-4 desktop:mb-6">
+                <Image
+                  src="/logo/cobaby_logo.png"
+                  alt="CoBaby"
+                  width={480}
+                  height={144}
+                  className="h-24 w-auto desktop:h-36"
+                />
+              </div>
+              <h2 className="font-heading text-3xl desktop:text-4xl font-semibold mb-4 text-cobaby-dark">
+                ¿Quiénes <span className="text-cobaby-mint">somos?</span>
+              </h2>
+              <p className="font-body text-cobaby-dark/90 text-base desktop:text-lg leading-relaxed">
+                Dos mujeres unidas por la pasión de ayudar a otras personas a cumplir su sueño de formar una familia
+              </p>
+            </header>
+
+            <div className="grid grid-cols-1 desktop:grid-cols-2 gap-6 desktop:gap-8 max-w-4xl mx-auto mb-16 desktop:mb-20">
+              {[
+                {
+                  icon: IconHeart,
+                  name: "Natalia",
+                  description: "Madre sola a la que le hubiese encantado encontrar a su donante sin intermediarios.",
+                },
+                {
+                  icon: IconStar,
+                  name: "Giuliana",
+                  description: "Psicóloga especializada en familias diversas desde hace más de 20 años.",
+                },
+              ].map(({ icon: IconComponent, name, description }) => (
+                <article
+                  key={name}
+                  className="relative rounded-2xl desktop:rounded-3xl bg-[#fbfaf9] p-6 desktop:p-8 shadow-lg overflow-hidden text-center"
+                >
+                  <div className="absolute top-0 right-0 w-10 h-10 desktop:w-12 desktop:h-12 rounded-bl-2xl bg-cobaby-pink/15" aria-hidden />
+                  <div className="relative flex flex-col items-center gap-4">
+                    <div className="text-cobaby-mint shrink-0 w-14 h-14 desktop:w-16 desktop:h-16 flex items-center justify-center">
+                      <IconComponent />
+                    </div>
+                    <h3 className="font-heading font-semibold text-cobaby-dark text-lg desktop:text-xl">
+                      {name}
+                    </h3>
+                    <p className="font-body text-cobaby-dark/80 text-sm desktop:text-base leading-relaxed">
+                      {description}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <p className="text-center text-sm text-cobaby-dark/60 mb-8 desktop:mb-10">
+              Hecho con{" "}
+              <span className="inline-flex align-middle" aria-hidden>
+                <svg className="w-4 h-4 text-cobaby-green inline-block" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                </svg>
+              </span>{" "}
+              en Latinoamérica
+            </p>
+
+            {/* Línea full viewport */}
+            <div
+              className="border-t border-cobaby-dark/10 w-[100vw] ml-[calc(50%-50vw)] pt-8 desktop:pt-10"
+              aria-hidden
+            />
+
+            <footer className="pb-6 desktop:pb-8">
+              <div className="flex flex-col desktop:flex-row desktop:items-center desktop:justify-between gap-4">
+                <Link href="/" className="flex items-center shrink-0 cursor-pointer">
+                  <Image
+                    src="/logo/cobaby_logo.png"
+                    alt="CoBaby"
+                    width={100}
+                    height={30}
+                    className="h-7 w-auto"
+                  />
+                </Link>
+                <p className="text-sm text-cobaby-dark/60 text-center desktop:text-right">
+                  ©2026 CoBaby. Todos los derechos reservados.
+                </p>
+              </div>
+            </footer>
           </div>
         </section>
       </div>
