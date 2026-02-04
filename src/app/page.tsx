@@ -183,6 +183,168 @@ export default function Home() {
             </Link>
           </div>
         </section>
+
+        {/* Section 2: Únete a CoBaby */}
+        <section
+          id="unete"
+          className="col-span-full -mx-[15px] desktop:-mx-[50px] bg-white py-12 desktop:py-20 px-[15px] desktop:px-[50px] text-cobaby-dark"
+        >
+          <div className="max-w-[1600px] mx-auto flex flex-col items-center">
+            <header className="text-center max-w-2xl mb-8 desktop:mb-12">
+              <h2 className="font-heading text-3xl desktop:text-4xl font-semibold mb-4 text-cobaby-dark">
+                Únete a <span className="text-cobaby-mint">CoBaby</span>
+              </h2>
+              <p className="font-body text-cobaby-dark/90 text-base desktop:text-lg leading-relaxed mb-6">
+                Somos la primera plataforma en América Latina para mujeres que desean ser madres y quieren encontrar el camino que mejor se adapte a su vida.
+              </p>
+              <p className="font-body font-bold text-cobaby-green text-lg desktop:text-xl mb-3">
+                Queremos entender mejor lo que necesitas.
+              </p>
+              <p className="font-body text-cobaby-dark/90 text-sm desktop:text-base leading-relaxed">
+                Si te interesa explorar tus opciones para ser mamá, responde este breve cuestionario y una de nuestras expertas en acompañamiento a la maternidad se pondrá en contacto contigo para una conversación privada y confidencial.
+              </p>
+            </header>
+
+            <div className="w-full max-w-xl rounded-2xl desktop:rounded-3xl bg-[#fbfaf9] text-cobaby-dark p-6 desktop:p-8 shadow-xl">
+              <form
+                className="flex flex-col gap-4 desktop:gap-5 font-body"
+                onSubmit={(e) => e.preventDefault()}
+              >
+                <label className="flex flex-col gap-1.5 text-sm font-bold">
+                  <span>¿Cómo te defines?<span className="text-red-600">*</span></span>
+                  <select
+                    className="unete-select w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint appearance-none pr-10"
+                    required
+                  >
+                    <option value="">Selecciona una opción</option>
+                    <option value="mujer">Mujer</option>
+                    <option value="hombre">Hombre</option>
+                    <option value="otros">Otros</option>
+                  </select>
+                </label>
+                <label className="flex flex-col gap-1.5 text-sm font-bold">
+                  <span>¿Cómo te llamas? <span className="font-normal text-cobaby-dark/70">(opcional)</span></span>
+                  <input
+                    type="text"
+                    placeholder="Tu nombre de pila"
+                    className="w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark placeholder:text-cobaby-dark/50 focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint"
+                  />
+                </label>
+                <label className="flex flex-col gap-1.5 text-sm font-bold">
+                  <span>Edad<span className="text-red-600">*</span></span>
+                  <select
+                    className="unete-select w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint appearance-none pr-10"
+                    required
+                  >
+                    <option value="">Selecciona tu rango de edad</option>
+                    <option value="18-24">18-24</option>
+                    <option value="25-29">25-29</option>
+                    <option value="30-34">30-34</option>
+                    <option value="35-39">35-39</option>
+                    <option value="40-44">40-44</option>
+                    <option value="45-mas">45 años o más</option>
+                  </select>
+                </label>
+                <label className="flex flex-col gap-1.5 text-sm font-bold">
+                  <span>País en el que vives<span className="text-red-600">*</span></span>
+                  <select
+                    className="unete-select w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint appearance-none pr-10"
+                    required
+                  >
+                    <option value="">Selecciona tu país</option>
+                    <option value="argentina">Argentina</option>
+                    <option value="mexico">México</option>
+                    <option value="colombia">Colombia</option>
+                    <option value="chile">Chile</option>
+                    <option value="peru">Perú</option>
+                    <option value="espana">España</option>
+                    <option value="otro">Otro</option>
+                  </select>
+                </label>
+                <label className="flex flex-col gap-1.5 text-sm font-bold">
+                  <span>Ciudad<span className="text-red-600">*</span></span>
+                  <select
+                    className="unete-select w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint appearance-none pr-10"
+                    required
+                  >
+                    <option value="">Selecciona tu ciudad</option>
+                    <option value="buenos-aires">Buenos Aires</option>
+                    <option value="ciudad-de-mexico">Ciudad de México</option>
+                    <option value="bogota">Bogotá</option>
+                    <option value="santiago">Santiago</option>
+                    <option value="lima">Lima</option>
+                    <option value="madrid">Madrid</option>
+                    <option value="otra">Otra</option>
+                  </select>
+                </label>
+                <label className="flex flex-col gap-1.5 text-sm font-bold">
+                  <span>¿En qué momento de tu deseo de ser mamá estás hoy?<span className="text-red-600">*</span></span>
+                  <select
+                    className="unete-select w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint appearance-none pr-10"
+                    required
+                  >
+                    <option value="">Selecciona una opción</option>
+                    <option value="explorando">Solo estoy explorando</option>
+                    <option value="informando">Me estoy informando</option>
+                    <option value="proximos-12">Quiero avanzar en los próximos 12 meses</option>
+                    <option value="ahora">Quiero empezar ahora</option>
+                  </select>
+                </label>
+                <label className="flex flex-col gap-1.5 text-sm font-bold">
+                  <span>¿Qué esperas de CoBaby?<span className="text-red-600">*</span></span>
+                  <select
+                    className="unete-select w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint appearance-none pr-10"
+                    required
+                  >
+                    <option value="">Selecciona una opción</option>
+                    <option value="informacion-asesoramiento">Información y asesoramiento para tener un hijo</option>
+                    <option value="donante">Encontrar un donante de semen</option>
+                    <option value="pareja-estable">Encontrar una pareja estable para formar familia</option>
+                    <option value="co-padre">Encontrar un co-padre</option>
+                    <option value="co-madre">Encontrar una co-madre</option>
+                    <option value="otros">Otros</option>
+                  </select>
+                </label>
+                <label className="flex flex-col gap-1.5 text-sm font-bold">
+                  <span>¿Qué te gustaría que esta conversación te ayudara a aclarar?<span className="text-red-600">*</span></span>
+                  <select
+                    className="unete-select w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint appearance-none pr-10"
+                    required
+                  >
+                    <option value="">Selecciona una opción</option>
+                    <option value="ser-mama-por-mi-cuenta">Quiero entender si realmente puedo ser mamá por mi cuenta</option>
+                    <option value="opciones-reales">Quiero conocer mis opciones reales</option>
+                    <option value="tema-donante">Me preocupa el tema del donante</option>
+                    <option value="hablar-con-alguien">Quiero hablar con alguien que me entienda</option>
+                    <option value="no-tengo-claro">Todavía no lo tengo claro</option>
+                  </select>
+                </label>
+
+                <p className="text-center text-sm text-cobaby-dark/80 py-2">
+                  Tu información es confidencial. Esta conversación es privada y sin compromiso.
+                </p>
+
+                <label className="flex gap-3 items-start cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    className="mt-1 w-5 h-5 rounded-full border-2 border-cobaby-dark/40 text-cobaby-mint focus:ring-cobaby-mint shrink-0 accent-cobaby-mint"
+                    required
+                  />
+                  <span className="text-xs desktop:text-sm text-cobaby-dark/90 leading-relaxed">
+                    He leído y acepto la política de protección de datos personales. Entiendo que mis datos serán tratados de acuerdo con la legislación vigente en materia de protección de datos personales en Latinoamérica (Ley de Habeas Data), y que puedo ejercer mis derechos de acceso, rectificación, cancelación y oposición en cualquier momento.<span className="text-red-600">*</span>
+                  </span>
+                </label>
+
+                <button
+                  type="submit"
+                  className="w-full mt-2 py-3.5 rounded-full bg-cobaby-mint text-white font-body font-bold hover:bg-cobaby-green transition-colors touch-manipulation"
+                >
+                  Hablar con una experta
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
