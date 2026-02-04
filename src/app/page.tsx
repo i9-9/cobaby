@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 import { IconClose, IconDroplet, IconHeart, IconMenu, IconStar } from "@/components/HeroIcons";
 import { FormSelect, type SelectOption } from "@/components/FormSelect";
 import { AnimateOnView } from "@/components/AnimateOnView";
@@ -76,9 +76,7 @@ const formSelectOptions = {
   ] as SelectOption[],
 };
 
-export default function Home() {
-  const searchParams = useSearchParams();
-  const formEnviado = searchParams.get("form") === "enviado";
+function HomeContent({ formEnviado }: { formEnviado: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = useCallback(() => setMenuOpen(false), []);
   const openMenu = useCallback(() => setMenuOpen(true), []);
@@ -595,5 +593,19 @@ export default function Home() {
         </div>
       </section>
     </div>
+  );
+}
+
+function HomeWithSearchParams() {
+  const searchParams = useSearchParams();
+  const formEnviado = searchParams.get("form") === "enviado";
+  return <HomeContent formEnviado={formEnviado} />;
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={<HomeContent formEnviado={false} />}>
+      <HomeWithSearchParams />
+    </Suspense>
   );
 }
