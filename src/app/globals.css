@@ -41,6 +41,11 @@ body {
   font-family: var(--font-heading);
 }
 
+/* Hero title: misma proporción que en desktop en todos los breakpoints; en desktop (768px+) queda fijo 4.5rem */
+.hero-title-fluid {
+  font-size: clamp(2.25rem, 9.375vw, 4.5rem);
+}
+
 /* Gradiente para "encuentro" (transición hacia el centro de la palabra) */
 .text-gradient-encuentro {
   background: linear-gradient(90deg, #409679 0%, #409679 35%, #E48067 65%, #E48067 100%);

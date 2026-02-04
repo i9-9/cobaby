@@ -186,7 +186,10 @@ export default function Home() {
             />
           </div>
 
-          <h1 className="font-heading text-5xl desktop:text-7xl w-full desktop:col-span-8 desktop:col-start-3 font-semibold text-cobaby-dark text-center" style={{ lineHeight: 0.753 }}>
+          <h1
+            className="font-heading w-full desktop:col-span-8 desktop:col-start-3 font-semibold text-cobaby-dark text-center hero-title-fluid"
+            style={{ lineHeight: 0.753 }}
+          >
             <span className="block">Todas las familias</span>
             <span className="block">
               nacen con un <span className="text-gradient-encuentro">encuentro</span>
@@ -440,7 +443,7 @@ export default function Home() {
         {/* Section 4: ¿Quiénes somos? — Natalia y Giuliana + footer */}
         <section
           id="quienes-somos"
-          className="col-span-full -mx-[15px] desktop:-mx-[50px] bg-white py-12 desktop:py-20 px-[15px] desktop:px-[50px] text-cobaby-dark overflow-x-hidden"
+          className="col-span-full -mx-[15px] desktop:-mx-[50px] bg-white pt-12 pb-6 desktop:pt-20 desktop:pb-8 px-[15px] desktop:px-[50px] text-cobaby-dark overflow-x-hidden"
         >
           <div className="max-w-[1600px] mx-auto">
             <header className="text-center max-w-2xl mx-auto mb-10 desktop:mb-14">
@@ -480,7 +483,7 @@ export default function Home() {
                 >
                   <div className="absolute top-0 right-0 w-10 h-10 desktop:w-12 desktop:h-12 rounded-bl-2xl bg-cobaby-pink/15" aria-hidden />
                   <div className="relative flex flex-col items-start gap-4">
-                    <div className="text-cobaby-mint shrink-0 w-14 h-14 desktop:w-16 desktop:h-16 flex items-center justify-center">
+                    <div className="shrink-0 w-14 h-14 desktop:w-16 desktop:h-16 rounded-full bg-cobaby-mint flex items-center justify-center text-white">
                       <IconComponent />
                     </div>
                     <h3 className="font-heading font-semibold text-cobaby-dark text-lg desktop:text-xl">
@@ -494,7 +497,7 @@ export default function Home() {
               ))}
             </div>
 
-            <p className="text-center text-sm text-cobaby-dark/60 mb-8 desktop:mb-10">
+            <p className="text-center text-sm text-cobaby-dark/60 mb-4 desktop:mb-5">
               Hecho con{" "}
               <span className="inline-flex align-middle" aria-hidden>
                 <svg className="w-4 h-4 text-cobaby-mint inline-block" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -506,12 +509,12 @@ export default function Home() {
 
             {/* Línea full viewport */}
             <div
-              className="border-t border-cobaby-dark/10 w-[100vw] ml-[calc(50%-50vw)] pt-4 desktop:pt-5"
+              className="border-t border-cobaby-dark/10 w-[100vw] ml-[calc(50%-50vw)] py-2 desktop:py-2.5"
               aria-hidden
             />
 
-            <footer className="py-4 desktop:py-5 flex flex-col justify-center">
-              <div className="flex flex-col desktop:flex-row desktop:items-center desktop:justify-between gap-3">
+            <footer className="min-h-0 py-2 desktop:py-2.5 flex flex-col items-center justify-center">
+              <div className="flex flex-col desktop:flex-row desktop:items-center desktop:justify-between gap-2 w-full max-w-[1600px]">
                 <Link href="/" className="flex items-center shrink-0 cursor-pointer">
                   <Image
                     src="/logo/cobaby_logo.png"

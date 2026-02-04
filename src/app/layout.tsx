@@ -48,9 +48,15 @@ export const metadata: Metadata = {
       "La comunidad digital para personas que sueñan con formar una familia en Latinoamérica. Encuentra donantes, pareja o co-padres.",
     images: [
       {
-        url: "/logo/cobaby_logo.png",
-        width: 400,
-        height: 120,
+        url: "/ogimage/ogimage.png",
+        width: 1200,
+        height: 630,
+        alt: "CoBaby",
+      },
+      {
+        url: "/square_seo/square_seo.png",
+        width: 1200,
+        height: 1200,
         alt: "CoBaby",
       },
     ],
@@ -60,6 +66,7 @@ export const metadata: Metadata = {
     title: "CoBaby | Todas las familias nacen con un encuentro",
     description:
       "La comunidad digital para personas que sueñan con formar una familia en Latinoamérica.",
+    images: ["/ogimage/ogimage.png"],
   },
   robots: {
     index: true,
@@ -67,6 +74,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: siteUrl,
+  },
+  icons: {
+    icon: "/favicon/favicon.png",
+    apple: "/square_seo/square_seo.png",
   },
 };
 
