@@ -79,6 +79,19 @@ export default function Home() {
   const closeMenu = useCallback(() => setMenuOpen(false), []);
   const openMenu = useCallback(() => setMenuOpen(true), []);
 
+  const handleNavClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      e.preventDefault();
+      const id = href.startsWith("#") ? href.slice(1) : href;
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      closeMenu();
+    },
+    [closeMenu]
+  );
+
   useEffect(() => {
     if (!menuOpen) return;
     const onEscape = (e: KeyboardEvent) => {
@@ -109,7 +122,12 @@ export default function Home() {
           </Link>
           <nav className="hidden desktop:flex items-center gap-8 font-body font-bold text-cobaby-dark" aria-label="Navegación principal">
             {navItems.map(({ href, label }) => (
-              <Link key={href} href={href} className="hover:text-cobaby-green transition-colors cursor-pointer">
+              <Link
+                key={href}
+                href={href}
+                onClick={(e) => handleNavClick(e, href)}
+                className="hover:text-cobaby-green transition-colors cursor-pointer"
+              >
                 {label}
               </Link>
             ))}
@@ -161,7 +179,7 @@ export default function Home() {
                   >
                     <Link
                       href={href}
-                      onClick={closeMenu}
+                      onClick={(e) => handleNavClick(e, href)}
                       className="block py-4 px-3 -mx-3 rounded-xl hover:bg-cobaby-mint/20 hover:text-cobaby-green active:bg-cobaby-mint/30 transition-colors text-lg text-center cursor-pointer"
                     >
                       {label}
@@ -443,7 +461,7 @@ export default function Home() {
         {/* Section 4: ¿Quiénes somos? — Natalia y Giuliana + footer */}
         <section
           id="quienes-somos"
-          className="col-span-full -mx-[15px] desktop:-mx-[50px] bg-white pt-12 pb-6 desktop:pt-20 desktop:pb-8 px-[15px] desktop:px-[50px] text-cobaby-dark overflow-x-hidden"
+          className="col-span-full -mx-[15px] desktop:-mx-[50px] bg-white pt-24 pb-6 desktop:pt-32 desktop:pb-8 px-[15px] desktop:px-[50px] text-cobaby-dark overflow-x-hidden"
         >
           <div className="max-w-[1600px] mx-auto">
             <header className="text-center max-w-2xl mx-auto mb-10 desktop:mb-14">
@@ -497,7 +515,7 @@ export default function Home() {
               ))}
             </div>
 
-            <p className="text-center text-sm text-cobaby-dark/60 mb-4 desktop:mb-5">
+            <p className="text-center text-sm text-cobaby-dark/60 mb-20 desktop:mb-28">
               Hecho con{" "}
               <span className="inline-flex align-middle" aria-hidden>
                 <svg className="w-4 h-4 text-cobaby-mint inline-block" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
