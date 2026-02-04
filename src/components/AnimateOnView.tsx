@@ -32,7 +32,7 @@ export function AnimateOnView({
   className = "",
   as: Tag = "div",
 }: AnimateOnViewProps) {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLElement | null>(null);
   const [inView, setInView] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
 
@@ -85,7 +85,7 @@ export function AnimateOnView({
 
   return (
     <Tag
-      ref={ref as React.RefObject<HTMLElement>}
+      ref={ref as React.Ref<HTMLDivElement>}
       className={`${variantClass} ${visible ? "animate-on-view-visible" : ""} ${className}`.trim()}
     >
       {children}
