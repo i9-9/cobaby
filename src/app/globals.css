@@ -41,6 +41,26 @@ body {
   font-family: var(--font-body);
 }
 
+/* Focus visible: anillo mint solo con teclado (no con clic) */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+[tabindex]:not([tabindex="-1"]):focus {
+  outline: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible {
+  outline: 2px solid var(--cobaby-mint);
+  outline-offset: 2px;
+}
+
 .font-heading {
   font-family: var(--font-heading);
 }
@@ -50,13 +70,90 @@ body {
   font-size: clamp(2.25rem, 9.375vw, 4.5rem);
 }
 
-/* Gradiente para "encuentro" (transición hacia el centro de la palabra) */
+/* Gradiente para "encuentro" (transición hacia el centro) + shimmer sutil */
 .text-gradient-encuentro {
-  background: linear-gradient(90deg, #409679 0%, #409679 35%, #E48067 65%, #E48067 100%);
+  background: linear-gradient(
+    90deg,
+    #409679 0%,
+    #409679 28%,
+    #5ab894 32%,
+    #5ab894 38%,
+    #409679 42%,
+    #409679 50%,
+    #E48067 50%,
+    #E48067 58%,
+    #eba090 62%,
+    #eba090 68%,
+    #E48067 72%,
+    #E48067 100%
+  );
+  background-size: 220% 100%;
+  background-position: 0% 0;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+  animation: encuentro-shimmer 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-gradient-encuentro {
+    animation: none;
+    background-size: 100% 100%;
+    background-position: 0 0;
+    background: linear-gradient(90deg, #409679 0%, #409679 35%, #E48067 65%, #E48067 100%);
+  }
+}
+
+@keyframes encuentro-shimmer {
+  0%, 100% {
+    background-position: 0% 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+}
+
+/* Animaciones de entrada al entrar en viewport (Intersection Observer) */
+.animate-on-view {
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate-on-view:not(.animate-on-view-visible) {
+  opacity: 0;
+}
+
+.animate-fade-up:not(.animate-on-view-visible) {
+  transform: translateY(36px);
+}
+
+.animate-fade-down:not(.animate-on-view-visible) {
+  transform: translateY(-36px);
+}
+
+.animate-fade-in:not(.animate-on-view-visible) {
+  transform: none;
+}
+
+.animate-scale-in:not(.animate-on-view-visible) {
+  transform: scale(0.96);
+}
+
+.animate-on-view-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-view,
+  .animate-on-view:not(.animate-on-view-visible),
+  .animate-on-view-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* Select con flecha en sección Únete */

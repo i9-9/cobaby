@@ -99,7 +99,7 @@ export function FormSelect({
       <button
         type="button"
         id={id}
-        className="unete-custom-select w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint text-left flex items-center justify-between gap-2 touch-manipulation transition-colors hover:border-cobaby-dark/30 cursor-pointer"
+        className="unete-custom-select w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark text-left flex items-center justify-between gap-2 touch-manipulation transition-colors hover:border-cobaby-dark/30 cursor-pointer"
         onClick={() => setOpen((o) => !o)}
         onKeyDown={handleKeyDown}
         aria-haspopup="listbox"
@@ -130,8 +130,8 @@ export function FormSelect({
               aria-selected={selected?.value === opt.value}
               className={`px-4 py-3 cursor-pointer transition-colors select-none ${
                 i === highlightedIndex
-                  ? "bg-cobaby-mint/20 text-cobaby-green"
-                  : "hover:bg-cobaby-mint/20 hover:text-cobaby-green text-cobaby-dark"
+                  ? "bg-cobaby-mint/40 text-cobaby-green"
+                  : "hover:bg-cobaby-mint/40 hover:text-cobaby-green text-cobaby-dark"
               }`}
               onClick={() => selectOption(opt)}
               onMouseEnter={() => setHighlightedIndex(i)}

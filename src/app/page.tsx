@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { IconClose, IconDroplet, IconHeart, IconMenu, IconStar } from "@/components/HeroIcons";
 import { FormSelect, type SelectOption } from "@/components/FormSelect";
+import { AnimateOnView } from "@/components/AnimateOnView";
 
 const features = [
   { src: "/tabs_images/perfil.png", label: "Crea tu perfil" },
@@ -184,7 +185,7 @@ export default function Home() {
                     <Link
                       href={href}
                       onClick={(e) => handleNavClick(e, href)}
-                      className="block py-4 px-3 -mx-3 rounded-xl hover:bg-cobaby-mint/20 hover:text-cobaby-green active:bg-cobaby-mint/30 transition-colors text-lg text-center cursor-pointer"
+                      className="block py-4 px-3 -mx-3 rounded-xl hover:bg-cobaby-mint/40 hover:text-cobaby-green active:bg-cobaby-mint/50 transition-colors text-lg text-center cursor-pointer"
                     >
                       {label}
                     </Link>
@@ -200,7 +201,7 @@ export default function Home() {
         <div className="grid grid-cols-6 desktop:grid-cols-12 gap-x-4 desktop:gap-x-6">
           <section className="col-span-full desktop:col-span-12 grid grid-cols-1 desktop:grid-cols-12 place-items-center pt-6 desktop:pt-12 pb-12 desktop:pb-20">
           {/* Logo grande centrado por encima del título */}
-          <div className="flex justify-center mb-6 desktop:mb-8 desktop:col-span-12">
+          <AnimateOnView className="flex justify-center mb-6 desktop:mb-8 desktop:col-span-12" variant="fade-in">
             <Image
               src="/logo/cobaby_logo.svg"
               alt="Cobaby"
@@ -208,49 +209,54 @@ export default function Home() {
               height={150}
               className="h-32 w-auto desktop:h-[200px] desktop:w-auto"
             />
-          </div>
+          </AnimateOnView>
 
-          <h1
-            className="font-heading w-full desktop:col-span-8 desktop:col-start-3 font-semibold text-cobaby-dark text-center hero-title-fluid"
-            style={{ lineHeight: 0.753 }}
-          >
-            <span className="block">Todas las familias</span>
-            <span className="block">
-              nacen con un <span className="text-gradient-encuentro">encuentro</span>
-            </span>
-          </h1>
-          <p className="mt-8 desktop:mt-10 text-base desktop:text-lg text-cobaby-dark max-w-xl font-body leading-snug text-center mx-auto desktop:col-span-12">
-            La comunidad digital para personas que sueñan
-            <br />
-            con formar una familia en Latinoamérica.
-          </p>
+          <AnimateOnView className="w-full desktop:col-span-8 desktop:col-start-3" variant="fade-up" delay={80}>
+            <h1
+              className="font-heading font-semibold text-cobaby-dark text-center hero-title-fluid"
+              style={{ lineHeight: 0.753 }}
+            >
+              <span className="block">Todas las familias</span>
+              <span className="block">
+                nacen con un <span className="text-gradient-encuentro">encuentro</span>
+              </span>
+            </h1>
+          </AnimateOnView>
+          <AnimateOnView className="mt-8 desktop:mt-10 desktop:col-span-12" variant="fade-up" delay={120}>
+            <p className="text-base desktop:text-lg text-cobaby-dark max-w-xl font-body leading-snug text-center mx-auto">
+              La comunidad digital para personas que sueñan
+              <br />
+              con formar una familia en Latinoamérica.
+            </p>
+          </AnimateOnView>
 
           {/* 4 features: 2x2 mobile, 1x4 desktop */}
           <div className="grid grid-cols-2 desktop:grid-cols-4 gap-4 desktop:gap-6 w-full max-w-4xl mt-10 desktop:mt-14 desktop:col-span-12">
-            {features.map(({ src, label }) => (
-              <div
-                key={label}
-                className="rounded-2xl border border-[#e5e0dc] bg-[#fbfaf9] p-3 desktop:p-4 flex flex-col items-center justify-center text-center"
-              style={{ borderWidth: 1.08 }}
-              >
-                <div className="relative w-9 h-9 desktop:w-10 desktop:h-10 mb-1.5 desktop:mb-2 flex items-center justify-center shrink-0">
-                  <Image
-                    src={src}
-                    alt=""
-                    width={40}
-                    height={40}
-                    className="object-contain w-full h-full"
-                  />
+            {features.map(({ src, label }, i) => (
+              <AnimateOnView key={label} variant="fade-up" delay={160 + i * 60}>
+                <div
+                  className="rounded-2xl border border-[#e5e0dc] bg-[#fbfaf9] p-3 desktop:p-4 flex flex-col items-center justify-center text-center"
+                  style={{ borderWidth: 1.08 }}
+                >
+                  <div className="relative w-9 h-9 desktop:w-10 desktop:h-10 mb-1.5 desktop:mb-2 flex items-center justify-center shrink-0">
+                    <Image
+                      src={src}
+                      alt=""
+                      width={40}
+                      height={40}
+                      className="object-contain w-full h-full"
+                    />
+                  </div>
+                  <span className="font-body font-bold text-cobaby-dark text-xs desktop:text-sm leading-tight">
+                    {label}
+                  </span>
                 </div>
-                <span className="font-body font-bold text-cobaby-dark text-xs desktop:text-sm leading-tight">
-                  {label}
-                </span>
-              </div>
+              </AnimateOnView>
             ))}
           </div>
 
           {/* CTAs */}
-          <div className="flex flex-row gap-2 desktop:gap-4 w-full desktop:max-w-none justify-center mt-12 desktop:mt-16 desktop:col-span-12">
+          <AnimateOnView className="flex flex-row gap-2 desktop:gap-4 w-full desktop:max-w-none justify-center mt-12 desktop:mt-16 desktop:col-span-12" variant="fade-up" delay={120}>
             <Link
               href="#unete"
               className="flex-1 desktop:flex-initial min-w-0 inline-flex items-center justify-center rounded-full bg-cobaby-mint px-6 py-3.5 text-white font-body font-bold hover:bg-cobaby-green transition-colors cursor-pointer shadow-md"
@@ -264,7 +270,7 @@ export default function Home() {
               <IconDroplet />
               Donar semen
             </Link>
-          </div>
+          </AnimateOnView>
           </section>
         </div>
       </div>
@@ -272,7 +278,7 @@ export default function Home() {
       {/* Section 2: Únete a CoBaby — fondo ancho completo */}
       <section id="unete" className="w-full bg-white py-12 desktop:py-20 text-cobaby-dark">
         <div className="max-w-[1600px] mx-auto px-[15px] desktop:px-[50px] flex flex-col items-center">
-            <header className="text-center max-w-2xl mb-8 desktop:mb-12">
+            <AnimateOnView as="header" className="text-center max-w-2xl mb-8 desktop:mb-12" variant="fade-up">
               <h2 className="font-heading text-4xl desktop:text-5xl font-semibold mb-8 desktop:mb-10 text-cobaby-dark">
                 Únete a <span className="text-cobaby-mint">CoBaby</span>
               </h2>
@@ -285,9 +291,9 @@ export default function Home() {
               <p className="font-body text-cobaby-dark/90 text-base desktop:text-lg leading-relaxed">
                 Si te interesa explorar tus opciones para ser mamá, responde este breve cuestionario y una de nuestras expertas en acompañamiento a la maternidad se pondrá en contacto contigo para una conversación privada y confidencial.
               </p>
-            </header>
+            </AnimateOnView>
 
-            <div className="w-full max-w-xl rounded-2xl desktop:rounded-3xl bg-[#fbfaf9] text-cobaby-dark p-6 desktop:p-8 shadow-xl">
+            <AnimateOnView className="w-full max-w-xl rounded-2xl desktop:rounded-3xl bg-[#fbfaf9] text-cobaby-dark p-6 desktop:p-8 shadow-xl" variant="fade-up" delay={120}>
               {formEnviado ? (
                 <div className="text-center py-6 desktop:py-8">
                   <p className="font-heading text-xl desktop:text-2xl font-semibold text-cobaby-mint mb-3">
@@ -335,7 +341,7 @@ export default function Home() {
                     type="text"
                     name="nombre"
                     placeholder="Tu nombre de pila"
-                    className="w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark placeholder:text-cobaby-dark/50 placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint"
+                    className="w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark placeholder:text-cobaby-dark/50 placeholder:font-normal"
                   />
                 </label>
                 <label className="flex flex-col gap-1.5 text-sm font-bold" id="label-edad">
@@ -410,7 +416,7 @@ export default function Home() {
                     type="checkbox"
                     name="acepto_politica"
                     value="Sí"
-                    className="mt-1 w-5 h-5 rounded-full border-2 border-cobaby-dark/40 text-cobaby-mint focus:ring-cobaby-mint shrink-0 accent-cobaby-mint"
+                    className="mt-1 w-5 h-5 rounded-full border-2 border-cobaby-dark/40 text-cobaby-mint shrink-0 accent-cobaby-mint"
                     required
                   />
                   <span className="text-xs desktop:text-sm text-cobaby-dark/90 leading-relaxed">
@@ -426,21 +432,21 @@ export default function Home() {
                 </button>
               </form>
               )}
-            </div>
+            </AnimateOnView>
           </div>
         </section>
 
       {/* Section 3: ¿Qué es CoBaby? — fondo ancho completo */}
       <section id="que-es" className="w-full bg-[#fbfaf9] py-12 desktop:py-20 text-cobaby-dark">
         <div className="max-w-[1600px] mx-auto px-[15px] desktop:px-[50px]">
-            <header className="text-center max-w-4xl mx-auto mb-8 desktop:mb-12">
+            <AnimateOnView as="header" className="text-center max-w-4xl mx-auto mb-8 desktop:mb-12" variant="fade-up">
               <h2 className="font-heading text-4xl desktop:text-5xl font-semibold mb-8 desktop:mb-10">
                 ¿Qué es <span className="text-cobaby-mint">CoBaby?</span>
               </h2>
               <p className="font-body text-cobaby-dark/90 text-base desktop:text-lg leading-snug mt-4 desktop:mt-6 mb-8 desktop:mb-10">
                 CoBaby es una comunidad digital dirigida a personas que quieren ser madres con un donante de semen, o mujeres y hombres que buscan un vínculo romántico para ser pareja y posteriormente padres, o simplemente coparentar sin vínculo romántico.
               </p>
-            </header>
+            </AnimateOnView>
 
             <div className="grid grid-cols-1 desktop:grid-cols-2 gap-6 desktop:gap-8 max-w-4xl mx-auto">
               {[
@@ -464,28 +470,29 @@ export default function Home() {
                   title: "Comunidad de apoyo",
                   description: "Únete a una red de personas que entienden tu camino y comparten tus sueños.",
                 },
-              ].map(({ icon, title, description }) => (
-                <article
-                  key={title}
-                  className="bg-white rounded-2xl p-5 desktop:p-6 shadow-sm flex flex-col gap-4 desktop:gap-5 items-start text-left"
-                >
-                  <div className="shrink-0 w-12 h-12 desktop:w-14 desktop:h-14 rounded-[16px] overflow-hidden relative">
-                    <Image
-                      src={icon}
-                      alt=""
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="min-w-0">
-                    <h3 className="font-heading font-semibold text-cobaby-dark text-base desktop:text-lg mb-1.5">
-                      {title}
-                    </h3>
-                    <p className="font-body text-cobaby-dark/80 text-sm desktop:text-base leading-relaxed">
-                      {description}
-                    </p>
-                  </div>
-                </article>
+              ].map(({ icon, title, description }, i) => (
+                <AnimateOnView key={title} variant="fade-up" delay={i * 80}>
+                  <article
+                    className="bg-white rounded-2xl p-5 desktop:p-6 shadow-sm flex flex-col gap-4 desktop:gap-5 items-start text-left"
+                  >
+                    <div className="shrink-0 w-12 h-12 desktop:w-14 desktop:h-14 rounded-[16px] overflow-hidden relative">
+                      <Image
+                        src={icon}
+                        alt=""
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="font-heading font-semibold text-cobaby-dark text-base desktop:text-lg mb-1.5">
+                        {title}
+                      </h3>
+                      <p className="font-body text-cobaby-dark/80 text-sm desktop:text-base leading-relaxed">
+                        {description}
+                      </p>
+                    </div>
+                  </article>
+                </AnimateOnView>
               ))}
             </div>
           </div>
@@ -494,7 +501,7 @@ export default function Home() {
       {/* Section 4: ¿Quiénes somos? — fondo ancho completo */}
       <section id="quienes-somos" className="w-full bg-white pt-24 pb-6 desktop:pt-32 desktop:pb-8 text-cobaby-dark overflow-x-hidden">
         <div className="max-w-[1600px] mx-auto px-[15px] desktop:px-[50px]">
-            <header className="text-center max-w-2xl mx-auto mb-10 desktop:mb-14">
+            <AnimateOnView as="header" className="text-center max-w-2xl mx-auto mb-10 desktop:mb-14" variant="fade-up">
               <div className="flex justify-center mb-4 desktop:mb-6">
                 <Image
                   src="/logo/cobaby_logo.svg"
@@ -510,7 +517,7 @@ export default function Home() {
               <p className="font-body text-cobaby-dark/90 text-base desktop:text-lg leading-snug mt-6 desktop:mt-8 mb-8 desktop:mb-10">
                 Dos mujeres unidas por la pasión de ayudar a otras personas a cumplir su sueño de formar una familia
               </p>
-            </header>
+            </AnimateOnView>
 
             <div className="grid grid-cols-1 desktop:grid-cols-2 gap-6 desktop:gap-8 max-w-4xl mx-auto mb-16 desktop:mb-20">
               {[
@@ -524,24 +531,25 @@ export default function Home() {
                   name: "Giuliana",
                   description: "Psicóloga especializada en familias diversas desde hace más de 20 años.",
                 },
-              ].map(({ icon: IconComponent, name, description }) => (
-                <article
-                  key={name}
-                  className="relative rounded-2xl desktop:rounded-3xl bg-[#fbfaf9] p-6 desktop:p-8 shadow-lg overflow-hidden text-left"
-                >
-                  <div className="absolute top-0 right-0 w-10 h-10 desktop:w-12 desktop:h-12 rounded-bl-2xl bg-cobaby-pink/15" aria-hidden />
-                  <div className="relative flex flex-col items-start gap-4">
-                    <div className="shrink-0 w-14 h-14 desktop:w-16 desktop:h-16 rounded-full bg-cobaby-mint flex items-center justify-center text-white">
-                      <IconComponent />
+              ].map(({ icon: IconComponent, name, description }, i) => (
+                <AnimateOnView key={name} variant="fade-up" delay={i * 100}>
+                  <article
+                    className="relative rounded-2xl desktop:rounded-3xl bg-[#fbfaf9] p-6 desktop:p-8 shadow-lg overflow-hidden text-left"
+                  >
+                    <div className="absolute top-0 right-0 w-10 h-10 desktop:w-12 desktop:h-12 rounded-bl-2xl bg-cobaby-pink/15" aria-hidden />
+                    <div className="relative flex flex-col items-start gap-4">
+                      <div className="shrink-0 w-14 h-14 desktop:w-16 desktop:h-16 rounded-full bg-cobaby-mint flex items-center justify-center text-white">
+                        <IconComponent />
+                      </div>
+                      <h3 className="font-heading font-semibold text-cobaby-dark text-lg desktop:text-xl">
+                        {name}
+                      </h3>
+                      <p className="font-body text-cobaby-dark/80 text-sm desktop:text-base leading-relaxed">
+                        {description}
+                      </p>
                     </div>
-                    <h3 className="font-heading font-semibold text-cobaby-dark text-lg desktop:text-xl">
-                      {name}
-                    </h3>
-                    <p className="font-body text-cobaby-dark/80 text-sm desktop:text-base leading-relaxed">
-                      {description}
-                    </p>
-                  </div>
-                </article>
+                  </article>
+                </AnimateOnView>
               ))}
             </div>
 
@@ -563,7 +571,12 @@ export default function Home() {
 
             <footer className="min-h-0 py-4 desktop:py-2.5 flex flex-col items-center justify-center">
               <div className="flex flex-row items-center justify-between gap-3 w-full max-w-[1600px]">
-                <Link href="/" className="flex items-center shrink-0 cursor-pointer">
+                <button
+                  type="button"
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                  className="flex items-center shrink-0 cursor-pointer bg-transparent border-0 p-0"
+                  aria-label="Volver arriba"
+                >
                   <Image
                     src="/logo/cobaby_logo.svg"
                     alt="CoBaby"
@@ -571,7 +584,7 @@ export default function Home() {
                     height={48}
                     className="h-8 w-auto desktop:h-10"
                   />
-                </Link>
+                </button>
                 <p className="text-xs desktop:text-sm text-cobaby-dark/60 text-right shrink-0 min-w-0 max-w-[60%] desktop:max-w-none">
                   ©2026 CoBaby. Todos los derechos reservados.
                 </p>
