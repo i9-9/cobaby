@@ -108,7 +108,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Header: ancho completo, contenido limitado */}
-      <header className="sticky top-0 z-40 w-full flex items-center justify-between py-4 desktop:py-3 bg-[#f5f5f5]">
+      <header className="sticky top-0 z-40 w-full flex items-center justify-between py-4 desktop:py-3 bg-[#f5f5f5]/80 backdrop-blur-sm shadow-[0_2px_12px_rgba(0,0,0,0.06)] border-t-0 border-b border-cobaby-dark/10">
         <div className="w-full max-w-[1600px] mx-auto px-[15px] desktop:px-[50px] flex items-center justify-between">
           <Link href="/" className="flex items-center shrink-0 cursor-pointer">
             <Image
@@ -249,7 +249,7 @@ export default function Home() {
           {/* CTAs */}
           <div className="flex flex-row flex-wrap gap-3 desktop:gap-4 w-full max-w-md desktop:max-w-none justify-center mt-12 desktop:mt-16 desktop:col-span-12">
             <Link
-              href="#comienza"
+              href="#unete"
               className="inline-flex items-center justify-center rounded-full bg-cobaby-mint px-6 py-3.5 text-white font-body font-bold hover:bg-cobaby-green transition-colors cursor-pointer shadow-md"
             >
               Comienza tu historia
