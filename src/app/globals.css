@@ -2,25 +2,50 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #393939;
+  /* Cobaby palette */
+  --cobaby-dark: #393939;
+  --cobaby-green: #57756B;
+  --cobaby-mint: #79CAA1;
+  --cobaby-pink: #FDC5C2;
+  /* Page margins */
+  --page-margin-x: 15px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-margin-x: 50px;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-cobaby-dark: #393939;
+  --color-cobaby-green: #57756B;
+  --color-cobaby-mint: #79CAA1;
+  --color-cobaby-pink: #FDC5C2;
+  --font-heading: var(--font-heading), ui-serif, serif;
+  --font-body: var(--font-body), ui-sans-serif, sans-serif;
+  /* Solo dos breakpoints: default (mobile) y desktop */
+  --breakpoint-desktop: 768px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+/* Gradiente para "encuentro" (transición hacia el centro de la palabra) */
+.text-gradient-encuentro {
+  background: linear-gradient(90deg, #409679 0%, #409679 35%, #E48067 65%, #E48067 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
