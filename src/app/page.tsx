@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { IconClose, IconDroplet, IconMenu } from "@/components/HeroIcons";
+import { FormSelect, type SelectOption } from "@/components/FormSelect";
 
 const features = [
   { src: "/tabs_images/perfil.png", label: "Crea tu perfil" },
@@ -17,6 +18,61 @@ const navItems = [
   { href: "#unete", label: "Únete" },
   { href: "#quienes-somos", label: "¿Quiénes somos?" },
 ];
+
+const formSelectOptions = {
+  comoTeDefines: [
+    { value: "mujer", label: "Mujer" },
+    { value: "hombre", label: "Hombre" },
+    { value: "otros", label: "Otros" },
+  ] as SelectOption[],
+  edad: [
+    { value: "18-24", label: "18-24" },
+    { value: "25-29", label: "25-29" },
+    { value: "30-34", label: "30-34" },
+    { value: "35-39", label: "35-39" },
+    { value: "40-44", label: "40-44" },
+    { value: "45-mas", label: "45 años o más" },
+  ] as SelectOption[],
+  pais: [
+    { value: "argentina", label: "Argentina" },
+    { value: "mexico", label: "México" },
+    { value: "colombia", label: "Colombia" },
+    { value: "chile", label: "Chile" },
+    { value: "peru", label: "Perú" },
+    { value: "espana", label: "España" },
+    { value: "otro", label: "Otro" },
+  ] as SelectOption[],
+  ciudad: [
+    { value: "buenos-aires", label: "Buenos Aires" },
+    { value: "ciudad-de-mexico", label: "Ciudad de México" },
+    { value: "bogota", label: "Bogotá" },
+    { value: "santiago", label: "Santiago" },
+    { value: "lima", label: "Lima" },
+    { value: "madrid", label: "Madrid" },
+    { value: "otra", label: "Otra" },
+  ] as SelectOption[],
+  momentoDeseo: [
+    { value: "explorando", label: "Solo estoy explorando" },
+    { value: "informando", label: "Me estoy informando" },
+    { value: "proximos-12", label: "Quiero avanzar en los próximos 12 meses" },
+    { value: "ahora", label: "Quiero empezar ahora" },
+  ] as SelectOption[],
+  queEsperas: [
+    { value: "informacion-asesoramiento", label: "Información y asesoramiento para tener un hijo" },
+    { value: "donante", label: "Encontrar un donante de semen" },
+    { value: "pareja-estable", label: "Encontrar una pareja estable para formar familia" },
+    { value: "co-padre", label: "Encontrar un co-padre" },
+    { value: "co-madre", label: "Encontrar una co-madre" },
+    { value: "otros", label: "Otros" },
+  ] as SelectOption[],
+  queAclarar: [
+    { value: "ser-mama-por-mi-cuenta", label: "Quiero entender si realmente puedo ser mamá por mi cuenta" },
+    { value: "opciones-reales", label: "Quiero conocer mis opciones reales" },
+    { value: "tema-donante", label: "Me preocupa el tema del donante" },
+    { value: "hablar-con-alguien", label: "Quiero hablar con alguien que me entienda" },
+    { value: "no-tengo-claro", label: "Todavía no lo tengo claro" },
+  ] as SelectOption[],
+};
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -210,17 +266,15 @@ export default function Home() {
                 className="flex flex-col gap-4 desktop:gap-5 font-body"
                 onSubmit={(e) => e.preventDefault()}
               >
-                <label className="flex flex-col gap-1.5 text-sm font-bold">
+                <label className="flex flex-col gap-1.5 text-sm font-bold" id="label-como-te-defines">
                   <span>¿Cómo te defines?<span className="text-red-600">*</span></span>
-                  <select
-                    className="unete-select w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint appearance-none pr-10"
+                  <FormSelect
+                    id="como-te-defines"
+                    name="como_te_defines"
+                    placeholder="Selecciona una opción"
+                    options={formSelectOptions.comoTeDefines}
                     required
-                  >
-                    <option value="">Selecciona una opción</option>
-                    <option value="mujer">Mujer</option>
-                    <option value="hombre">Hombre</option>
-                    <option value="otros">Otros</option>
-                  </select>
+                  />
                 </label>
                 <label className="flex flex-col gap-1.5 text-sm font-bold">
                   <span>¿Cómo te llamas? <span className="font-normal text-cobaby-dark/70">(opcional)</span></span>
@@ -230,98 +284,71 @@ export default function Home() {
                     className="w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark placeholder:text-cobaby-dark/50 focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint"
                   />
                 </label>
-                <label className="flex flex-col gap-1.5 text-sm font-bold">
+                <label className="flex flex-col gap-1.5 text-sm font-bold" id="label-edad">
                   <span>Edad<span className="text-red-600">*</span></span>
-                  <select
-                    className="unete-select w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint appearance-none pr-10"
+                  <FormSelect
+                    id="edad"
+                    name="edad"
+                    placeholder="Selecciona tu rango de edad"
+                    options={formSelectOptions.edad}
                     required
-                  >
-                    <option value="">Selecciona tu rango de edad</option>
-                    <option value="18-24">18-24</option>
-                    <option value="25-29">25-29</option>
-                    <option value="30-34">30-34</option>
-                    <option value="35-39">35-39</option>
-                    <option value="40-44">40-44</option>
-                    <option value="45-mas">45 años o más</option>
-                  </select>
+                  />
                 </label>
-                <label className="flex flex-col gap-1.5 text-sm font-bold">
+                <label className="flex flex-col gap-1.5 text-sm font-bold" id="label-pais">
                   <span>País en el que vives<span className="text-red-600">*</span></span>
-                  <select
-                    className="unete-select w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint appearance-none pr-10"
+                  <FormSelect
+                    id="pais"
+                    name="pais"
+                    placeholder="Selecciona tu país"
+                    options={formSelectOptions.pais}
                     required
-                  >
-                    <option value="">Selecciona tu país</option>
-                    <option value="argentina">Argentina</option>
-                    <option value="mexico">México</option>
-                    <option value="colombia">Colombia</option>
-                    <option value="chile">Chile</option>
-                    <option value="peru">Perú</option>
-                    <option value="espana">España</option>
-                    <option value="otro">Otro</option>
-                  </select>
+                  />
                 </label>
-                <label className="flex flex-col gap-1.5 text-sm font-bold">
+                <label className="flex flex-col gap-1.5 text-sm font-bold" id="label-ciudad">
                   <span>Ciudad<span className="text-red-600">*</span></span>
-                  <select
-                    className="unete-select w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint appearance-none pr-10"
+                  <FormSelect
+                    id="ciudad"
+                    name="ciudad"
+                    placeholder="Selecciona tu ciudad"
+                    options={formSelectOptions.ciudad}
                     required
-                  >
-                    <option value="">Selecciona tu ciudad</option>
-                    <option value="buenos-aires">Buenos Aires</option>
-                    <option value="ciudad-de-mexico">Ciudad de México</option>
-                    <option value="bogota">Bogotá</option>
-                    <option value="santiago">Santiago</option>
-                    <option value="lima">Lima</option>
-                    <option value="madrid">Madrid</option>
-                    <option value="otra">Otra</option>
-                  </select>
+                  />
                 </label>
-                <label className="flex flex-col gap-1.5 text-sm font-bold">
+                <label className="flex flex-col gap-1.5 text-sm font-bold" id="label-momento">
                   <span>¿En qué momento de tu deseo de ser mamá estás hoy?<span className="text-red-600">*</span></span>
-                  <select
-                    className="unete-select w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint appearance-none pr-10"
+                  <FormSelect
+                    id="momento-deseo"
+                    name="momento_deseo"
+                    placeholder="Selecciona una opción"
+                    options={formSelectOptions.momentoDeseo}
                     required
-                  >
-                    <option value="">Selecciona una opción</option>
-                    <option value="explorando">Solo estoy explorando</option>
-                    <option value="informando">Me estoy informando</option>
-                    <option value="proximos-12">Quiero avanzar en los próximos 12 meses</option>
-                    <option value="ahora">Quiero empezar ahora</option>
-                  </select>
+                  />
                 </label>
-                <label className="flex flex-col gap-1.5 text-sm font-bold">
+                <label className="flex flex-col gap-1.5 text-sm font-bold" id="label-que-esperas">
                   <span>¿Qué esperas de CoBaby?<span className="text-red-600">*</span></span>
-                  <select
-                    className="unete-select w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint appearance-none pr-10"
+                  <FormSelect
+                    id="que-esperas"
+                    name="que_esperas"
+                    placeholder="Selecciona una opción"
+                    options={formSelectOptions.queEsperas}
                     required
-                  >
-                    <option value="">Selecciona una opción</option>
-                    <option value="informacion-asesoramiento">Información y asesoramiento para tener un hijo</option>
-                    <option value="donante">Encontrar un donante de semen</option>
-                    <option value="pareja-estable">Encontrar una pareja estable para formar familia</option>
-                    <option value="co-padre">Encontrar un co-padre</option>
-                    <option value="co-madre">Encontrar una co-madre</option>
-                    <option value="otros">Otros</option>
-                  </select>
+                  />
                 </label>
-                <label className="flex flex-col gap-1.5 text-sm font-bold">
+                <label className="flex flex-col gap-1.5 text-sm font-bold" id="label-que-aclarar">
                   <span>¿Qué te gustaría que esta conversación te ayudara a aclarar?<span className="text-red-600">*</span></span>
-                  <select
-                    className="unete-select w-full px-4 py-3 rounded-xl border border-[#e5e0dc] bg-white text-cobaby-dark focus:outline-none focus:ring-2 focus:ring-cobaby-mint/50 focus:border-cobaby-mint appearance-none pr-10"
+                  <FormSelect
+                    id="que-aclarar"
+                    name="que_aclarar"
+                    placeholder="Selecciona una opción"
+                    options={formSelectOptions.queAclarar}
                     required
-                  >
-                    <option value="">Selecciona una opción</option>
-                    <option value="ser-mama-por-mi-cuenta">Quiero entender si realmente puedo ser mamá por mi cuenta</option>
-                    <option value="opciones-reales">Quiero conocer mis opciones reales</option>
-                    <option value="tema-donante">Me preocupa el tema del donante</option>
-                    <option value="hablar-con-alguien">Quiero hablar con alguien que me entienda</option>
-                    <option value="no-tengo-claro">Todavía no lo tengo claro</option>
-                  </select>
+                  />
                 </label>
 
                 <p className="text-center text-sm text-cobaby-dark/80 py-2">
-                  Tu información es confidencial. Esta conversación es privada y sin compromiso.
+                  Tu información es confidencial.
+                  <br />
+                  Esta conversación es privada y sin compromiso.
                 </p>
 
                 <label className="flex gap-3 items-start cursor-pointer group">
