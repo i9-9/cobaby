@@ -107,9 +107,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="grid grid-cols-6 desktop:grid-cols-12 gap-x-4 desktop:gap-x-6 px-[15px] desktop:px-[50px] max-w-[1600px] mx-auto">
-        {/* Header: logo + nav (desktop) / hamburger (mobile) */}
-        <header className="col-span-full flex items-center justify-between py-4 desktop:py-8 bg-[#f5f5f5] -mx-[15px] desktop:-mx-[50px] px-[15px] desktop:px-[50px]">
+      {/* Header: ancho completo, contenido limitado */}
+      <header className="sticky top-0 z-40 w-full flex items-center justify-between py-4 desktop:py-8 bg-[#f5f5f5]">
+        <div className="w-full max-w-[1600px] mx-auto px-[15px] desktop:px-[50px] flex items-center justify-between">
           <Link href="/" className="flex items-center shrink-0 cursor-pointer">
             <Image
               src="/logo/cobaby_logo.png"
@@ -142,7 +142,8 @@ export default function Home() {
           >
             {menuOpen ? <IconClose /> : <IconMenu />}
           </button>
-        </header>
+        </div>
+      </header>
 
         {/* Mobile menu: full screen */}
         <div
@@ -191,8 +192,10 @@ export default function Home() {
           </aside>
         </div>
 
-        {/* Hero */}
-        <section className="col-span-full desktop:col-span-12 grid grid-cols-1 desktop:grid-cols-12 place-items-center pt-6 desktop:pt-12 pb-12 desktop:pb-20">
+      {/* Hero: contenido con max-width */}
+      <div className="w-full max-w-[1600px] mx-auto px-[15px] desktop:px-[50px]">
+        <div className="grid grid-cols-6 desktop:grid-cols-12 gap-x-4 desktop:gap-x-6">
+          <section className="col-span-full desktop:col-span-12 grid grid-cols-1 desktop:grid-cols-12 place-items-center pt-6 desktop:pt-12 pb-12 desktop:pb-20">
           {/* Logo grande centrado por encima del título */}
           <div className="flex justify-center mb-6 desktop:mb-8 desktop:col-span-12">
             <Image
@@ -259,14 +262,13 @@ export default function Home() {
               Donar semen
             </Link>
           </div>
-        </section>
+          </section>
+        </div>
+      </div>
 
-        {/* Section 2: Únete a CoBaby */}
-        <section
-          id="unete"
-          className="col-span-full -mx-[15px] desktop:-mx-[50px] bg-white py-12 desktop:py-20 px-[15px] desktop:px-[50px] text-cobaby-dark"
-        >
-          <div className="max-w-[1600px] mx-auto flex flex-col items-center">
+      {/* Section 2: Únete a CoBaby — fondo ancho completo */}
+      <section id="unete" className="w-full bg-white py-12 desktop:py-20 text-cobaby-dark">
+        <div className="max-w-[1600px] mx-auto px-[15px] desktop:px-[50px] flex flex-col items-center">
             <header className="text-center max-w-2xl mb-8 desktop:mb-12">
               <h2 className="font-heading text-3xl desktop:text-4xl font-semibold mb-4 text-cobaby-dark">
                 Únete a <span className="text-cobaby-mint">CoBaby</span>
@@ -394,12 +396,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Section 3: ¿Qué es CoBaby? — cards con gradiente e iconos sole_icons */}
-        <section
-          id="que-es"
-          className="col-span-full -mx-[15px] desktop:-mx-[50px] bg-[#fbfaf9] py-12 desktop:py-20 px-[15px] desktop:px-[50px] text-cobaby-dark"
-        >
-          <div className="max-w-[1600px] mx-auto">
+      {/* Section 3: ¿Qué es CoBaby? — fondo ancho completo */}
+      <section id="que-es" className="w-full bg-[#fbfaf9] py-12 desktop:py-20 text-cobaby-dark">
+        <div className="max-w-[1600px] mx-auto px-[15px] desktop:px-[50px]">
             <header className="text-center max-w-4xl mx-auto mb-8 desktop:mb-12">
               <h2 className="font-heading text-3xl desktop:text-4xl font-semibold mb-8 desktop:mb-10">
                 ¿Qué es <span className="text-cobaby-mint">CoBaby?</span>
@@ -458,12 +457,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Section 4: ¿Quiénes somos? — Natalia y Giuliana + footer */}
-        <section
-          id="quienes-somos"
-          className="col-span-full -mx-[15px] desktop:-mx-[50px] bg-white pt-24 pb-6 desktop:pt-32 desktop:pb-8 px-[15px] desktop:px-[50px] text-cobaby-dark overflow-x-hidden"
-        >
-          <div className="max-w-[1600px] mx-auto">
+      {/* Section 4: ¿Quiénes somos? — fondo ancho completo */}
+      <section id="quienes-somos" className="w-full bg-white pt-24 pb-6 desktop:pt-32 desktop:pb-8 text-cobaby-dark overflow-x-hidden">
+        <div className="max-w-[1600px] mx-auto px-[15px] desktop:px-[50px]">
             <header className="text-center max-w-2xl mx-auto mb-10 desktop:mb-14">
               <div className="flex justify-center mb-4 desktop:mb-6">
                 <Image
@@ -547,9 +543,8 @@ export default function Home() {
                 </p>
               </div>
             </footer>
-          </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }
